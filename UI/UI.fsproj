@@ -11,5 +11,10 @@
     <Compile Include="Utilities\Lib.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="dotnet fshadeaot $(ProjectDir)/bin/$(ConfigurationName)/net6.0/UI.dll --verbose" />
+  </Target>
+
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

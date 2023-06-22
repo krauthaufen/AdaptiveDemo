@@ -7,7 +7,7 @@ open FSharp.Data.Adaptive
 open Aardworx.Rendering.WebGL
 open AdaptiveDemo
 
-  
+
 let ui (_env : Env<unit>) =
     let state = cval 0
     
