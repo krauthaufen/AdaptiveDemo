@@ -1,0 +1,73 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "toolrestore",
+            "command": "dotnet",
+            "type":"shell",
+            "args": [
+                "tool",
+                "restore"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "presentation": {
+                "reveal": "never"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "paketrestore",
+            "command": "dotnet",
+            "type":"shell",
+            "args": [
+                "paket",
+                "restore"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "presentation": {
+                "reveal": "never"
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": ["toolrestore"]
+        },
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "-c", "Release",
+                "AdaptiveDemo.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": ["toolrestore", "paketrestore"]
+        },
+        {
+            "label": "clean",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "clean",
+                "-c", "Release",
+                "AdaptiveDemo.sln"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

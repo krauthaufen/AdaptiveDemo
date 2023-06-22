@@ -1,0 +1,30 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/bin/": true,
+        "**/obj/": true,
+        ".vs": true,
+        ".paket": true,
+        ".ionide": true,
+        ".fake": true,
+        "paket-files": true,
+        "packages": true,
+        "**/*proj.user": true,
+        ".idea": true
+    },
+    "files.associations": {
+        "emscripten.h": "c",
+        "string.h": "c"
+    },
+    "editor.inlayHints.enabled": "off",
+    "FSharp.codeLenses.signature.enabled": false,
+    "FSharp.codeLenses.references.enabled": false,
+    "editor.codeLens": false,
+    "FSharp.enableMSBuildProjectGraph": true,
+    "FSharp.enableAdaptiveLspServer": true
+}

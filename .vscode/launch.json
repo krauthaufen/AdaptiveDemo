@@ -1,0 +1,36 @@
+{
+    "configurations": [
+        {
+            "name": "UI",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "dotnet",
+            "args": ["run", "-c", "Release", "--no-build", "${workspaceFolder}/UI/UI.fsproj"],
+            "cwd": "${workspaceFolder}/UI",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "AdaptiveDemo",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "dotnet",
+            "args": ["run", "-c", "Release", "--no-build", "${workspaceFolder}/AdaptiveDemo/AdaptiveDemo.fsproj"],
+            "cwd": "${workspaceFolder}/AdaptiveDemo",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+        }
+    ]
+
+
+}

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "paket": {
+      "version": "7.2.1",
+      "commands": [
+        "paket"
+      ]
+    },
+    "aardpack": {
+      "version": "1.0.10",
+      "commands": [
+        "aardpack"
+      ]
+    },
+    "adaptify": {
+      "version": "1.1.7",
+      "commands": [
+        "adaptify"
+      ]
+    },
+    "fshadeaot": {
+      "version": "5.2.17",
+      "commands": [
+        "fshadeaot"
+      ]
+    }
+  }
+}

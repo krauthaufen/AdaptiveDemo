@@ -1,0 +1,12 @@
+FSharp.Core
+Microsoft.AspNetCore.Components.WebAssembly
+Microsoft.AspNetCore.Components.WebAssembly.DevServer
+FSharp.Data.Adaptive
+Aardvark.Base
+Aardvark.Base.FSharp
+Aardvark.Dom.Elm
+Aardvark.Dom.Remote
+Aardworx.WebAssembly
+Aardworx.WebAssembly.Dom
+Aardworx.Rendering.WebGL
+Aardvark.FontProvider

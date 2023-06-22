@@ -1,0 +1,44 @@
+version: 6.2.1
+source https://api.nuget.org/v3/index.json
+copy_local: true
+framework: net6.0
+storage: none
+
+nuget FSharp.Core >= 6.0.7 lowest_matching: true
+nuget Microsoft.AspNetCore.Components.WebAssembly ~> 6.0.10
+nuget Microsoft.AspNetCore.Components.WebAssembly.DevServer ~> 6.0.10
+nuget Silk.NET.OpenGLES ~> 2.9.0
+nuget Silk.NET.Maths = 2.9.0
+nuget Silk.NET.Core = 2.9.0
+
+nuget Aardworx.WebAssembly       ~> 1.0.0-prerelease0018
+nuget Aardworx.WebAssembly.Dom   ~> 1.0.0-prerelease0018
+nuget Aardworx.Rendering.WebGL   ~> 1.0.0-prerelease0018
+
+nuget Aardvark.Dom.Elm = 1.0.0-prerelease0032
+nuget Aardvark.Dom.Remote = 1.0.0-prerelease0032
+nuget Aardvark.FontProvider ~> 0.0.6
+
+nuget Microsoft.JSInterop = 6.0.18
+nuget Microsoft.JSInterop.WebAssembly = 6.0.18
+nuget Microsoft.AspNetCore.Components.Forms = 6.0.18
+nuget Microsoft.AspNetCore.Components = 6.0.18
+nuget Microsoft.AspNetCore.Components.Web = 6.0.18
+nuget Microsoft.AspNetCore.Authorization = 6.0.18
+nuget Microsoft.AspNetCore.Connections.Abstractions ~> 6.0.15
+nuget Microsoft.AspNetCore.Metadata = 6.0.18
+nuget Microsoft.AspNetCore.Components.Analyzers = 6.0.18
+nuget Microsoft.AspNetCore.SignalR.Client ~> 6.0.16
+nuget Microsoft.Extensions.Configuration ~> 6.0.1
+nuget Microsoft.Extensions.Configuration.Abstractions ~> 6.0.0
+nuget Microsoft.Extensions.Configuration.Binder  ~> 6.0.0
+nuget Microsoft.Extensions.DependencyInjection  ~> 6.0.0
+nuget Microsoft.Extensions.DependencyInjection.Abstractions  ~> 6.0.0
+nuget Microsoft.Extensions.Features ~> 6.0.15
+nuget Microsoft.Extensions.FileProviders.Abstractions  ~> 6.0.0
+nuget Microsoft.Extensions.FileProviders.Physical  ~> 6.0.0
+nuget Microsoft.Extensions.FileSystemGlobbing  ~> 6.0.0
+nuget Microsoft.Extensions.Logging.Abstractions ~> 6.0.2
+nuget Microsoft.Extensions.Options  ~> 6.0.0
+nuget Microsoft.Extensions.Primitives  ~> 6.0.0
+nuget Microsoft.NETCore.Platforms ~> 6.0.8
