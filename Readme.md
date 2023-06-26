@@ -1,6 +1,6 @@
 # FSharp.Data.Adaptive Demos
 
-This repo contains the Examples shown in the F#-Conf Presentation about FSharp.Data.Adaptive held on 2023/06/26.
+This repo contains the Examples shown in the F#-Conf Presentation about [FSharp.Data.Adaptive](https://github.com/fsprojects/FSharp.Data.Adaptive) held on 2023/06/26.
 
 ## AdaptiveDemo
 
