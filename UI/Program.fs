@@ -41,6 +41,7 @@ let ui (_env : Env<unit>) =
             ]
             let! info = RenderControl.Info
             
+            // ground floor
             sg {
                 Sg.Trafo(Trafo3d.Scale(10.0, 10.0, 1.0))
             
@@ -54,6 +55,7 @@ let ui (_env : Env<unit>) =
                 
             }
             
+            // rotating box
             sg {
                 Sg.Translate (
                     state |> AVal.map (fun i ->
@@ -104,7 +106,7 @@ let ui (_env : Env<unit>) =
                 
             }
             
-            
+            // stack of boxes
             sg {
                 Sg.Shader {
                     DefaultSurfaces.trafo

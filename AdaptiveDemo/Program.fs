@@ -7,7 +7,7 @@ let map2Example() =
     let input2 = cval 10
     
     // sum both inputs and print when evaluating.
-    let dependent : aval<int> =
+    let dependent =
         (input1, input2) ||> AVal.map2 (fun v1 v2 ->
             printfn "  evaluate with %d %d" v1 v2
             v1 + v2
@@ -30,6 +30,8 @@ let map2Example() =
     // trigger evaluation.
     transact (fun () ->
         input1.Value <- 40
+    )
+    transact( fun () ->
         input2.Value <- 2
     )
 
@@ -40,7 +42,7 @@ let map2Example() =
 /// a dynamic-dependency example
 let bindExample() =
     
-    // a very simple database of fruits and their amount.
+    // a very simple database of fruits.
     let apples = cval 10
     let oranges = cval 3
     let grapes = cval 100
@@ -52,14 +54,14 @@ let bindExample() =
         ]
         
     // current fruit-of-interest
-    let fruit = cval "apples"
+    let fruitOfInterest = cval "apples"
     
     // the amount of the current fruit-of-interest
-    let amount =
+    let amountOfInterest =
         // Note that the `AVal.bind` function doesn't require these values
         // to come from a finite table but for the sake of simplicity
         // we use a map here.
-        fruit |> AVal.bind (fun name ->
+        fruitOfInterest |> AVal.bind (fun name ->
             printfn $"  lookup \"{name}\""
             match Map.tryFind name data with
             | Some count ->
@@ -76,22 +78,22 @@ let bindExample() =
         
     // force the number of apples
     printfn $"initial evaluation"
-    printfn $"  => {AVal.force amount} {fruit.Value}"
+    printfn $"  => {AVal.force amountOfInterest} {fruitOfInterest.Value}"
     
     // change the amount of oranges -> no effect
     printfn "change amount of oranges -> no effect"
     transact (fun () -> oranges.Value <- 4)
-    printfn $"  => {AVal.force amount} {fruit.Value}"
+    printfn $"  => {AVal.force amountOfInterest} {fruitOfInterest.Value}"
     
     // switch to oranges
     printfn $"switch to oranges"
-    transact (fun () -> fruit.Value <- "oranges")
-    printfn $"  => {AVal.force amount} {fruit.Value}"
+    transact (fun () -> fruitOfInterest.Value <- "oranges")
+    printfn $"  => {AVal.force amountOfInterest} {fruitOfInterest.Value}"
     
     // change the amount of oranges -> no effect
     printfn "change amount of oranges"
     transact (fun () -> oranges.Value <- 3)
-    printfn $"  => {AVal.force amount} {fruit.Value}"
+    printfn $"  => {AVal.force amountOfInterest} {fruitOfInterest.Value}"
     
 /// a list example showing why `aval<list<'a>>` is not the
 /// best granularity for lists.
@@ -148,7 +150,7 @@ let listExample() =
  
     // AList also provides efficient fold-combinators.
     printfn "sum"
-    let sum =
+    let sum : aval<int> =
         mapped' |> AList.sumBy (fun v ->
             // print something to observe evaluation
             printfn "  sumBy %A" v
@@ -157,7 +159,7 @@ let listExample() =
     printfn "  %d" (AVal.force sum)
     
     // adding to the list will only trigger one addition
-    printfn "append 10"
+    printfn "add 10"
     transact (fun () ->
         list'.Value <- IndexList.add 10 list'.Value
     )
@@ -170,6 +172,8 @@ let listExample() =
     )
     printfn "  %d" (AVal.force sum)
     
-//map2Example()
-//bindExample()
+map2Example()
+for i in 1 .. 10 do printfn ""
+bindExample()
+for i in 1 .. 10 do printfn ""
 listExample()
