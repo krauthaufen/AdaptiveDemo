@@ -15,7 +15,8 @@
         "paket-files": true,
         "packages": true,
         "**/*proj.user": true,
-        ".idea": true
+        ".idea": true,
+        "**/Aardvark.log": true
     },
     "files.associations": {
         "emscripten.h": "c",

@@ -7,7 +7,6 @@ open FSharp.Data.Adaptive
 open Aardworx.Rendering.WebGL
 open AdaptiveDemo
 
-
 let ui (_env : Env<unit>) =
     let state = cval 0
     
@@ -56,7 +55,6 @@ let ui (_env : Env<unit>) =
             }
             
             sg {
-                
                 Sg.Translate (
                     state |> AVal.map (fun i ->
                         V3d(0.0, 0.0, float i * 0.25)
@@ -101,6 +99,28 @@ let ui (_env : Env<unit>) =
                         align = TextAlignment.Center
                     )
                 }
+                
+                
+                
+            }
+            
+            
+            sg {
+                Sg.Shader {
+                    DefaultSurfaces.trafo
+                    DefaultSurfaces.simpleLighting
+                }
+                Sg.OnClick (fun _ ->
+                    transact (fun () ->
+                        state.Value <- state.Value - 1  
+                    )    
+                )
+                ASet.range (AVal.constant 1) state |> ASet.map (fun i ->
+                    let pos = V3d(2.0, -2.0, float i - 1.25)
+                    sg {
+                        Primitives.Box(Box3d.FromCenterAndSize(pos, V3d.Half), color = C4b.Red)
+                    }    
+                )
             }
         }
         

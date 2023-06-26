@@ -4,9 +4,11 @@ open System
 open Aardvark.Base
 open Aardvark.Dom
 open Aardvark.Rendering
+open Aardworx.Rendering.WebGL
 open Aardworx.WebAssembly
 open Aardworx.WebAssembly.Dom
 open FSharp.Data.Adaptive
+open Silk.NET.OpenGLES
 
 module UI =
 
@@ -30,8 +32,8 @@ module UI =
         
 
 
-    let run gl (ui : Env<unit> -> DomNode) =
-
+    let run (gl : WebGLApplication) (ui : Env<unit> -> DomNode) =
+        
         match LocalStorage.TryGet "uishadercache" with
         | Some v when v = "1" -> ()
         | _ ->
@@ -123,13 +125,14 @@ module RenderingHelpers =
                     
                     Sg.Proj (
                         info.ViewportSize |> AVal.map (fun s ->
-                            Frustum.perspective 50.0 0.1 100.0 (float s.X / float s.Y)
+                            Frustum.perspective 90.0 0.1 100.0 (float s.X / float s.Y)
                             |> Frustum.projTrafo
                         ) 
                     )
                     
                     Sg.OnDoubleTap (fun e ->
-                        orbitEnv.Emit [ OrbitMessage.SetTargetCenter(true, AnimationKind.Tanh, e.WorldPosition) ]    
+                        if e.Button = Button.Right then
+                            orbitEnv.Emit [ OrbitMessage.SetTargetCenter(true, AnimationKind.Tanh, e.WorldPosition) ]    
                     )
                     
                 ]

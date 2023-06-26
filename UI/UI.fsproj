@@ -11,6 +11,14 @@
     <Compile Include="Utilities\Lib.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\images\miramar_bk.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\miramar_dn.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\miramar_ft.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\miramar_lf.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\miramar_rt.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\miramar_up.png" />
+  </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="dotnet fshadeaot $(ProjectDir)/bin/$(ConfigurationName)/net6.0/UI.dll --verbose" />
